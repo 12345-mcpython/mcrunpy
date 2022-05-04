@@ -8,9 +8,4 @@ public class RunPython {
     public static void init() {
         interpreter = new PythonInterpreter();
     }
-
-    public static String runPython(String command) {
-        PythonOutput pythonOutput = new PythonOutput();
-        return "";
-    }
 }
