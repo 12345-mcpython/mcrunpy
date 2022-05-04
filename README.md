@@ -26,6 +26,3 @@ python脚本的输入在.minecraft/logs/latest.log
 
 如果你想用mc的API,你必须使用client.tsrg手动进行混淆.
 
-#### manual confusion video / 手动混淆视频
-
-https://mc-videos.obs.cn-north-4.myhuaweicloud.com/test.mp4
