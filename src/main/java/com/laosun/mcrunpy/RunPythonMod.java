@@ -42,6 +42,7 @@ public class RunPythonMod {
         File scripts = new File("python");
         PySystemState sys = interpreter.getSystemState();
         sys.path.add(scripts.getAbsolutePath());
+        logger.info(sys.path.toString());
         double end_python = System.currentTimeMillis();
         logger.info("Loading Python Successful. (Cost {} s)", (end_python - start_python) / 1000);
         double start_script = System.currentTimeMillis();
