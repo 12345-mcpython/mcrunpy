@@ -47,14 +47,14 @@ public class RunPythonMod {
         double start_script = System.currentTimeMillis();
         if (scripts.list() != null) {
             for (String str : Objects.requireNonNull(scripts.list())) {
-                if (new File(str).isDirectory()) {
+                if (new File("python/" + str).isDirectory()) {
                     continue;
                 }
                 try {
                     interpreter.execfile("python/" + str);
                 } catch (Exception e) {
                     logger.error("An error occurred while loading the script " + str);
-                    logger.error(e.getStackTrace());
+                    logger.error("", e);
                 }
             }
         }
