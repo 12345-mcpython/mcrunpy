@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
+import org.python.core.PySystemState;
 
 import java.io.File;
 import java.util.Objects;
@@ -38,17 +39,22 @@ public class RunPythonMod {
         double start_python = System.currentTimeMillis();
         RunPython.init();
         interpreter.setOut(new PythonOutput());
+        File scripts = new File("python");
+        PySystemState sys = interpreter.getSystemState();
+        sys.path.add(scripts.getAbsolutePath());
         double end_python = System.currentTimeMillis();
         logger.info("Loading Python Successful. (Cost {} s)", (end_python - start_python) / 1000);
         double start_script = System.currentTimeMillis();
-        File scripts = new File("python");
         if (scripts.list() != null) {
             for (String str : Objects.requireNonNull(scripts.list())) {
+                if (new File(str).isDirectory()) {
+                    continue;
+                }
                 try {
                     interpreter.execfile("python/" + str);
                 } catch (Exception e) {
                     logger.error("An error occurred while loading the script " + str);
-                    e.printStackTrace();
+                    logger.error(e.getStackTrace());
                 }
             }
         }
