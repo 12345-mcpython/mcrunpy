@@ -14,6 +14,8 @@ Output for python code is in .minecraft/logs/latest.log
 
 If you want to use minecraft's API.You must be manual confusion through "client.tsrg".
 
+Do not block the main thread!!!It will let mc stop loading!!!
+
 ### Chinese
 
 这个模组可以在mc中运行Python2.7.3a1的脚本.
@@ -26,3 +28,4 @@ python脚本的输出在.minecraft/logs/latest.log
 
 如果你想用mc的API,你必须使用client.tsrg手动进行混淆.
 
+不要阻塞主线程！！！它会让mc停止加载！！！
