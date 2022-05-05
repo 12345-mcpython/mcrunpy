@@ -56,7 +56,6 @@ public class RunPythonMod {
                     logger.error("An error occurred while loading the script " + str);
                     e.printStackTrace();
                     logger.error("", e);
-                    logger.error(e.getLocalizedMessage());
                 }
             }
         }
