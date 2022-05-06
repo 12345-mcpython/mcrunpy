@@ -1,17 +1,18 @@
 package com.laosun.mcrunpy;
 
 
+import com.laosun.mcrunpy.utils.PythonOutput;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
 import org.python.core.PySystemState;
+import org.python.util.PythonInterpreter;
 
 import java.io.File;
 import java.util.Objects;
 
-import static com.laosun.mcrunpy.RunPython.interpreter;
 
 /**
  * TODO:1.Add texture and language for the items and blocks created by script.
@@ -23,7 +24,7 @@ public class RunPythonMod {
     public static final String MODID = "mcrunpy";
     public static final String NAME = "Run Python Mod";
     public static final String VERSION = "1.12.2-1.0.0";
-
+    public static final PythonInterpreter interpreter = new PythonInterpreter();
 
     public static Logger logger;
 
@@ -37,7 +38,6 @@ public class RunPythonMod {
     public void init(FMLInitializationEvent event) {
         logger.info("Loading Run Python Mod and scripts.");
         double start_python = System.currentTimeMillis();
-        RunPython.init();
         interpreter.setOut(new PythonOutput());
         File scripts = new File("python");
         PySystemState sys = interpreter.getSystemState();

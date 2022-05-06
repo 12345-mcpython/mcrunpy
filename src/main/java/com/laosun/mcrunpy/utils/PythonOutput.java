@@ -1,4 +1,6 @@
-package com.laosun.mcrunpy;
+package com.laosun.mcrunpy.utils;
+
+import com.laosun.mcrunpy.RunPythonMod;
 
 import java.io.IOException;
 import java.io.OutputStream;
