@@ -23,7 +23,7 @@ import java.util.Objects;
 public class RunPythonMod {
     public static final String MODID = "mcrunpy";
     public static final String NAME = "Run Python Mod";
-    public static final String VERSION = "1.12.2-1.0.0";
+    public static final String VERSION = "1.12.2-alpha-1.0.0-1";
     public static final PythonInterpreter interpreter = new PythonInterpreter();
 
     public static Logger logger;
@@ -40,6 +40,13 @@ public class RunPythonMod {
         double start_python = System.currentTimeMillis();
         interpreter.setOut(new PythonOutput());
         File scripts = new File("python");
+        if (!scripts.exists()) {
+            if (scripts.mkdir()) {
+                logger.info("Create python directory successful");
+            } else {
+                logger.error("Create python directory fail");
+            }
+        }
         PySystemState sys = interpreter.getSystemState();
         sys.path.add(scripts.getAbsolutePath());
         double end_python = System.currentTimeMillis();
