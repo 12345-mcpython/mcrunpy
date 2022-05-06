@@ -23,7 +23,7 @@ public class PythonItem {
         ResourceLocation temp = null;
         for (Map.Entry<ResourceLocation, IRecipe> a : recipes) {
             temp = a.getKey();
-            RunPythonMod.logger.info(temp.toString());
+            MCRunPythonMod.logger.info(temp.toString());
             if (temp.toString().equals(unlocalizedName)) {
                 break;
             }

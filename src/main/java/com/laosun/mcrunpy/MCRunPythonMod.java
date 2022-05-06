@@ -19,10 +19,10 @@ import java.util.Objects;
  * TODO:2.Add entity, liquid and enchantments support.
  */
 
-@Mod(modid = RunPythonMod.MODID, name = RunPythonMod.NAME, version = RunPythonMod.VERSION)
-public class RunPythonMod {
+@Mod(modid = MCRunPythonMod.MODID, name = MCRunPythonMod.NAME, version = MCRunPythonMod.VERSION)
+public class MCRunPythonMod {
     public static final String MODID = "mcrunpy";
-    public static final String NAME = "Run Python Mod";
+    public static final String NAME = "MCRunPy";
     public static final String VERSION = "1.12.2-alpha-1.0.0-1";
     public static final PythonInterpreter interpreter = new PythonInterpreter();
 
