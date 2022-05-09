@@ -1,11 +1,15 @@
 package com.laosun.mcrunpy;
 
 
+import com.laosun.mcrunpy.commands.PythonCommand;
 import com.laosun.mcrunpy.utils.PythonOutput;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.IResourceManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import org.apache.logging.log4j.Logger;
 import org.python.core.PySystemState;
 import org.python.util.PythonInterpreter;
@@ -23,7 +27,7 @@ import java.util.Objects;
 public class MCRunPythonMod {
     public static final String MODID = "mcrunpy";
     public static final String NAME = "MCRunPy";
-    public static final String VERSION = "1.12.2-alpha-1.0.0-1";
+    public static final String VERSION = "1.12.2-alpha-1.0.0-2";
     public static final PythonInterpreter interpreter = new PythonInterpreter();
 
     public static Logger logger;
@@ -36,7 +40,9 @@ public class MCRunPythonMod {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        logger.info("Loading Run Python Mod and scripts.");
+        Minecraft a1 = Minecraft.getMinecraft();
+        IResourceManager resourceManager = a1.getResourceManager();
+        logger.info("Loading MC Run Python Mod and scripts.");
         double start_python = System.currentTimeMillis();
         interpreter.setOut(new PythonOutput());
         File scripts = new File("python");
@@ -68,6 +74,12 @@ public class MCRunPythonMod {
         }
         double end_script = System.currentTimeMillis();
         logger.info("Loading scripts Successful. (Cost {} s)", (end_script - start_script) / 1000);
+        // PythonItemAPI.remove("minecraft:stick");
+    }
+
+    @Mod.EventHandler
+    public void fmlLifeCycle(FMLServerStartingEvent event) {
+        event.registerServerCommand(new PythonCommand());
     }
 
 }
