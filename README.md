@@ -13,7 +13,9 @@ This mod can run python2.7.2 scripts in the minecraft.
 
 ### Don't run the script that you got in a place you don't trust!!! It might damage your computer!!!
 
+Scripts can be overloaded using "/python reload" command
  
+You can also enable the integration package author to customize MC using python 
 
 This mod use Jython to run python code.So the behavior of the script might not be the same as that of CPython
 
